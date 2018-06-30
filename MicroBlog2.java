@@ -15,21 +15,19 @@ public class MicroBlog2 {
 
     public static boolean isInteger(String s) {
         boolean isValidInteger = false;
-        try
-        {
+        try {
             Integer.parseInt(s);
 
             // s is a valid integer
 
             isValidInteger = true;
-        }
-        catch (NumberFormatException ex)
-        {
+        } catch (NumberFormatException ex) {
             // s is not an integer
         }
 
         return isValidInteger;
     }
+
     public static void main(String[] args) {
         display_menu();
 
@@ -88,13 +86,13 @@ public class MicroBlog2 {
 
                 System.out.println("Which user do you want to be?");
                 String userAnswer = keyboard.nextLine();
-                if (!isInteger(userAnswer)){
+                if (!isInteger(userAnswer)) {
                     System.out.println("Enter value between 0 and 2");
                 }
-                choosenUser = new Integer(keyboard.nextLine()).intValue();
+                choosenUser = new Integer(userAnswer).intValue();
 
             }
-                if (item.equals("3")) {
+            if (item.equals("3")) {
                 System.out.println("What do you want to post?");
                 String postedMessage = keyboard.nextLine();
                 System.out.println("What is the site address?");
@@ -125,7 +123,25 @@ public class MicroBlog2 {
         }
     }
 
-}
+    public PostedInfo getPostedInfo(int choosenUser) {
+        PostedInfo latestPost = null;
+
+        for (int i = 0; i < postedInfos.size(); i++) {
+            if (existingUsers.get(choosenUser) == postedInfos.get(i).getPostedUser()) {
+                latestPost = postedInfos.get(i);
+
+            }
+
+        }
+        return latestPost;
+    }
+
+        }
+
+
+
+
+
 
 
 
